@@ -72,6 +72,7 @@ exports.adminContent = (req, res) => {
 
 ///////////REGISTER
 exports.signup = (req,res) => {
+	console.log("Sign-Up >>>>>>>" , req.body);
 Register.findOne({ where : {
 	number:req.body.number} 
 }).then(register => {

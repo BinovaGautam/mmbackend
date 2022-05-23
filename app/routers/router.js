@@ -7,6 +7,8 @@ let profile = require('../config/profile.js');
 module.exports = function(app) {
 
 	const controller = require('../controller/controller.js');
+	const categoryController = require('../controller/categoryController.js');
+	
 	app.get('/api/userContent', [authJwt.verifyToken], controller.userContent);
 	app.get('/api/adminContent', [authJwt.verifyToken], controller.adminContent);
 
@@ -94,4 +96,8 @@ module.exports = function(app) {
 	
 	//Getting Advertisement by User
 	app.get('/api/get/postadvertisement', controller.Getpostadvertisement);
+
+	//Categories Section
+	app.get('/api/get/category', categoryController.getCategories);
 }
+  

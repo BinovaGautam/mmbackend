@@ -46,12 +46,12 @@ db.sequelize.sync({ alter: true }).then(() => {
 });
 
 // Create a Server
-var server = app.listen(4000, function () {
+var server = app.listen(8080, function () {
 	var host = server.address().address
 	var port = server.address().port
 	console.log("App listening at http://%s:%s", host, port)
 	app.get('/', (req, res) => {
-		res.send(' NIKHATH MICE SERVER IS RUNNING SUCCESSFULLY...!')
+		res.send(' HELLO BINOVA SERVER STARTED SUCCESSFULLY')
 	});
 })
 
