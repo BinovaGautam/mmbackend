@@ -296,48 +296,47 @@ exports.postadvertisement = (req, res) => {
 	if (filename) {
 		let arr = filename.split(',');
 		//let arrtemp = arr[0].split('/');
-console.log(arr[count]);
-		fs.writeFile(arr[count],req.body.
-			advimgbase.split(',')[1], 'base64', function (err) {
+		// console.log(arr[count]);
+		fs.writeFile(arr[count],req.body.advimgbase.split(',')[1], 'base64', function (err) {
 			if (err) {
-}else {
-}
+			}else {
+			}
 		})
 	}
-if(parseInt(count) == 0)
-{
-	PostAdd.create({
-		advcountry:req.body.advcountry,
-		advname: req.body.advname,
-		advprice: req.body.advprice,
-		advquant: req.body.advquant,
-		advdesc: req.body.advdesc,
-		advcategory:req.body.advcategory,
-		advcity: req.body.advcity,
-		advphone: req.body.advphone,
-		advfullname: req.body.advfullname,
-		advimgbase: filenameTemp,
-		advlocation:req.body.advlocation,
-		category:req.body.category,
-		userId: req.body.userId,
+	if(parseInt(count) == 0)
+	{
+		PostAdd.create({
+			advcountry:req.body.advcountry,
+			advname: req.body.advname,
+			advprice: req.body.advprice,
+			advquant: req.body.advquant,
+			advdesc: req.body.advdesc,
+			advcategory:req.body.advcategory,
+			advcity: req.body.advcity,
+			advphone: req.body.advphone,
+			advfullname: req.body.advfullname,
+			advimgbase: filenameTemp,
+			advlocation:req.body.advlocation,
+			category:req.body.category,
+			userId: req.body.userId,
 
-   }).then(postadd => {
+	}).then(postadd => {
+			res.status(200).json({
+		"description": "User Posted Product Successfully..!",
+				"postadd": postadd
+			});
+		}).catch(err => {
+			res.status(500).json({
+				"description": "User Failed to Post Product..!",
+				"error": err
+			});
+		})
+	} else{
 		res.status(200).json({
-     "description": "User Posted Product Successfully..!",
+			"description": "User Posted Product Successfully..!",
 			"postadd": postadd
 		});
-	}).catch(err => {
-		res.status(500).json({
-			"description": "User Failed to Post Product..!",
-			"error": err
-		});
-	})
-} else{
-	res.status(200).json({
-		"description": "User Posted Product Successfully..!",
-		"postadd": postadd
-	});
-}
+	}
 }
 
 

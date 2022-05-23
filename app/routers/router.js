@@ -3,6 +3,9 @@ const authJwt = require('./verifyJwtToken');
 var express = require('express');
 let product = require('../config/product.js');
 
+// for static file serve
+const path = require("path");
+
 let profile = require('../config/profile.js'); 
 module.exports = function(app) {
 
@@ -11,6 +14,11 @@ module.exports = function(app) {
 	
 	app.get('/api/userContent', [authJwt.verifyToken], controller.userContent);
 	app.get('/api/adminContent', [authJwt.verifyToken], controller.adminContent);
+
+
+	// Static file serve route
+	app.use(express.static(path.join(__dirname, "../../../", "build")));
+	app.use(express.static("public"));
 
 	//Register
 	app.post('/api/auth/signup', controller.signup);
@@ -98,6 +106,19 @@ module.exports = function(app) {
 	app.get('/api/get/postadvertisement', controller.Getpostadvertisement);
 
 	//Categories Section
-	app.get('/api/get/category', categoryController.getCategories);
+	// Post Category by User
+	app.post('/api/post/category', [authJwt.verifyToken],categoryController.createCategory);
+
+	// Get All Category by User
+	app.get('/api/categories', categoryController.getCategories);
+	
+	// Get Single Category by User
+	app.get('/api/categories/:id', categoryController.getCategory);
+	
+	// Update Category by User
+	app.put('/api/categories/:id', [authJwt.verifyToken], categoryController.updateCategory);
+	
+	// Delete Category by User
+	app.delete('/api/categories/:id', [authJwt.verifyToken], categoryController.deleteCategory);
 }
   

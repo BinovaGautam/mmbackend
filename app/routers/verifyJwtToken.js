@@ -4,7 +4,7 @@ const db = require('../config/db.config.js');
 const Role = db.role;
 const Register = db.register;
 
-verifyToken = (req, res, next) => {
+const verifyToken = (req, res, next) => {
 	let token = req.headers['x-access-token'];
   
 	if (!token){
@@ -25,7 +25,7 @@ verifyToken = (req, res, next) => {
 	});
 }
 
-isAdmin = (req, res, next) => {
+const isAdmin = (req, res, next) => {
 	let token = req.headers['x-access-token'];
 	
 	Register.findById(req.userId)
@@ -45,7 +45,7 @@ isAdmin = (req, res, next) => {
 		})
 }
 
-isPmOrAdmin = (req, res, next) => {
+const isPmOrAdmin = (req, res, next) => {
 	let token = req.headers['x-access-token'];
 
 	Register.findById(req.userId)
