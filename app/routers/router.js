@@ -107,7 +107,7 @@ module.exports = function(app) {
 
 	//Categories Section
 	// Post Category by User
-	app.post('/api/post/category', [authJwt.verifyToken],categoryController.createCategory);
+	app.post('/api/categories', [authJwt.verifyToken],categoryController.createCategory);
 
 	// Get All Category by User
 	app.get('/api/categories', categoryController.getCategories);
