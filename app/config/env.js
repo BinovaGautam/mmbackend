@@ -1,7 +1,7 @@
 const env = {
   database: "mobilemandy_db",
-  username: "root",
-  password: "",
+  username: "mmUser",
+  password: "Mobilemandy@2020",
   host: "localhost",
   dialect: "mysql",
   pool: {
