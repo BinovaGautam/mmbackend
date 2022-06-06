@@ -17,7 +17,7 @@ module.exports = function(app) {
 
 
 	// Static file serve route
-	app.use(express.static(path.join(__dirname, "../../../", "build")));
+	app.use(express.static(path.join(__dirname, "../../", "frontend-build")));
 	app.use(express.static("public"));
 
 	//Register
